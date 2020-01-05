@@ -3,7 +3,7 @@ import os
 
 from mergedeep import merge
 
-class ComboWriter:
+class JSONWriter:
 
     def __init__(self, filepath):
         self.filepath = filepath
