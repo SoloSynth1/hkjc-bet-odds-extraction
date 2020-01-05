@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 
+
 class ComboMatrixParser:
 
     def __init__(self, timestamp):
@@ -14,8 +15,13 @@ class ComboMatrixParser:
                   a_elements]
         for combo in combos:
             path = [x.strip() for x in combo[0].split(',')]
+            path = self.reorganize_path_elements(path)
             self.assign(result, path+[self.timestamp], float(combo[1]))
         return result
+
+    def reorganize_path_elements(self, path_elements):
+        odd_type, race_number, combination = path_elements
+        return [race_number, odd_type, combination]
 
     def assign(self, dictionary, path_elements, value):
         target = path_elements.pop(0)

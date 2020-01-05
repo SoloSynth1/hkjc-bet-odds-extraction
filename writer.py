@@ -1,6 +1,7 @@
 import json
 import os
 
+from mergedeep import merge
 
 class ComboWriter:
 
@@ -17,6 +18,6 @@ class ComboWriter:
         return previous_state
 
     def write(self, json_obj):
-        resultant_obj = {**self.previous_state, **json_obj}
+        merge(self.previous_state, json_obj)
         with open(self.filepath, 'w') as f:
-            f.write(json.dumps(resultant_obj))
+            f.write(json.dumps(self.previous_state))
