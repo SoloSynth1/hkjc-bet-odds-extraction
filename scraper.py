@@ -8,11 +8,12 @@ class SeleniumScraper:
             "https://bet.hkjc.com/racing/pages/odds_wpq.aspx?lang=ch": [
                 'combOddsTableQIN',
                 'combOddsTableQPL',
-                'wpTable1'
+                'wpTable1InnerTable'
             ],
-            "https://bet.hkjc.com/racing/pages/odds_qtt.aspx?lang=ch": [
-                'wpTable1'
-            ]
+            # The table inside is the same as the 'wpTable1InnerTable' from the page 'odds_wpq.aspx'
+            # "https://bet.hkjc.com/racing/pages/odds_qtt.aspx?lang=ch": [
+            #     'wpTable1InnerTable'
+            # ]
         }
         self.BROWSER_DRIVER_PATH = "./driver/chromedriver"
         self.TABLE_IDS = []
