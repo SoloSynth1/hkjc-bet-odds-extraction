@@ -7,7 +7,8 @@ from writer import JSONWriter
 
 DATETIME_FORMAT = "%Y-%m-%d"
 
-if __name__ == "__main__":
+
+def collect_data():
     scraper = SeleniumScraper()
     combo_parser = ComboMatrixParser(timestamp=str(int(time.time())))
     table_parser = InnerTableParser(timestamp=str(int(time.time())))
@@ -22,5 +23,11 @@ if __name__ == "__main__":
         elif 'wpTable1InnerTable' in url:
             result = table_parser.parse_table(table_html)
             print(result)
+    # scraper.driver.close()
 
 
+if __name__ == "__main__":
+    interval = 300  # 5 minutes
+    while True:
+        collect_data()
+        time.sleep(interval)
